@@ -2,7 +2,7 @@ import { Route, Switch } from 'react-router-dom'
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import CategoryNavigation from "./components/Homepage/CategoryNavigation/CategoryNavigation"
+import Main from "./components/Homepage/Main/Main"
 
 
 
@@ -14,7 +14,7 @@ function App() {
       <main>
         <div className="container">
           <Switch>
-            <Route path="/" component={CategoryNavigation} />
+            <Route path="/" component={Main} />
           </Switch>
         </div>
       </main>

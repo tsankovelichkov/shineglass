@@ -1,7 +1,7 @@
 import React from 'react'
 import './categoryNavigation.css';
 import { useEffect, useState } from "react";
-import CategoryNavElement from './CategoryNavElement'
+import CategoryNavElement from './CategoryNavElement/CategoryNavElement'
 
 const CategoryNavigation = () => {
   const [categoryNavElements, setCategoryNavElements] = useState([])

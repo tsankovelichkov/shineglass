@@ -1,5 +1,6 @@
 import React from 'react'
-import './Header.css'
+import { Link } from "react-router-dom"
+import "./Header.css"
 
 const Header = () => {
   return (
@@ -28,9 +29,9 @@ const Header = () => {
               </a>
               </li>
               <li className="nav-item">
-                <a href="#!" className="nav-link waves-effect">
+                <Link to="/contact" className="nav-link waves-effect">
                   Contact
-              </a>
+              </Link>
               </li>
               <li className="nav-item">
                 <a href="#!" className="nav-link waves-effect">
@@ -46,12 +47,9 @@ const Header = () => {
 
           </div>
         </div>
-
       </nav>
-
-      <div className="jumbotron jumbotron-image color-grey-light bckg-img">  
+      <div className="jumbotron jumbotron-image color-grey-light bckg-img">
       </div>
-
     </header>
   )
 }

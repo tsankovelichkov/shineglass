@@ -19,7 +19,7 @@ const CategoryNavigation = () => {
 
 
       <div className="row">
-        {categoryNavElements.map(x=><CategoryNavElement key={x._id} name={x.name} imageUrl={x.imageUrl}/>)}
+        {categoryNavElements.map(x=><CategoryNavElement key={x._id} name={x.name} linkname={x.linkname} imageUrl={x.imageUrl}/>)}
       </div>
 
     </section>

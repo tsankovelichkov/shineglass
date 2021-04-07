@@ -8,9 +8,9 @@ const Header = () => {
       <nav className="navbar navbar-expand-md navbar-light fixed-top scrolling-navbar navbar-transparent">
 
         <div className="container-fluid">
-          <a className="navbar-brand" href="https://mdbecommerce.com/">
+          <Link className="navbar-brand" to="/">
             <i>shineGlass</i>
-          </a>
+          </Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
             aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -24,9 +24,9 @@ const Header = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a href="#!" className="nav-link waves-effect">
+                <Link to="/about-us" className="nav-link waves-effect">
                   About Us
-              </a>
+              </Link>
               </li>
               <li className="nav-item">
                 <Link to="/contact" className="nav-link waves-effect">
@@ -34,14 +34,14 @@ const Header = () => {
               </Link>
               </li>
               <li className="nav-item">
-                <a href="#!" className="nav-link waves-effect">
+                <Link to="sign-in" className="nav-link waves-effect">
                   Sign in
-              </a>
+              </Link>
               </li>
               <li className="nav-item pl-2 mb-2 mb-md-0">
-                <a href="#!" type="button"
+                <Link to="sign-up" type="button"
                   className="btn btn-outline-info btn-md btn-rounded btn-navbar waves-effect waves-light">Sign
-                up</a>
+                up</Link>
               </li>
             </ul>
 

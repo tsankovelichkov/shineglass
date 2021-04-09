@@ -1,6 +1,6 @@
 import React from 'react'
 
-const BestsellerBlockContentCard = ({data}) => {
+const Product = ({data}) => {
   return (
     <div className="col-md-4 mb-5">
       <div className="card">
@@ -36,4 +36,4 @@ const BestsellerBlockContentCard = ({data}) => {
 
 }
 
-export default BestsellerBlockContentCard
+export default Product

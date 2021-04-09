@@ -1,5 +1,5 @@
 import React from 'react'
-import Product from '../../Cards/Product'
+import ProductListCard from '../../Cards/ProductListCard'
 import { useEffect, useState } from "react";
 
 
@@ -18,7 +18,7 @@ const BestsellersBlockContent = () => {
 
       <h4 className="text-center mt-4 mb-5"><strong>Bestsellers</strong></h4>
       <div className="row">
-        {bestsellerProducts.map(x => <Product key={x._id} data={x} />)}
+        {bestsellerProducts.map(x => <ProductListCard key={x._id} data={x} />)}
       </div>
     </section>
   )

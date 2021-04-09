@@ -1,6 +1,8 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
-const Product = ({data}) => {
+
+const ProductListCard = ({data}) => {
   return (
     <div className="col-md-4 mb-5">
       <div className="card">
@@ -25,8 +27,8 @@ const Product = ({data}) => {
             <p><span className="mr-1"><strong>${data.price}</strong></span></p>
             <button type="button" className="btn btn-primary btn-sm mr-1 mb-2 waves-effect waves-light"><i
               className="fas fa-shopping-cart pr-2"></i>Add to cart</button>
-            <button type="button" className="btn btn-light btn-sm mr-1 mb-2 waves-effect waves-light"><i
-              className="fas fa-info-circle pr-2"></i>Details</button>
+            <Link to={`/details/${data._id}`}><button type="button" className="btn btn-light btn-sm mr-1 mb-2 waves-effect waves-light"><i
+              className="fas fa-info-circle pr-2"></i>Details</button></Link>
           </div>
         </div>
 
@@ -36,4 +38,4 @@ const Product = ({data}) => {
 
 }
 
-export default Product
+export default ProductListCard

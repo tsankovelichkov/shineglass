@@ -1,7 +1,8 @@
 import React from 'react'
 import Navigation from './Navigation';
-import Product from "../Cards/Product"
+import Product from "../Cards/ProductListCard"
 import { useEffect, useState } from "react";
+import ProductListCard from '../Cards/ProductListCard';
 
 
 const Categories = ({
@@ -28,7 +29,7 @@ const Categories = ({
 
             <section>
                 <div className="row">
-                    {sunglassesModelInfo.map(x => <Product key={x._id} data={x} />)}
+                    {sunglassesModelInfo.map(x => <ProductListCard key={x._id} data={x} />)}
                 </div>
             </section>
         </>

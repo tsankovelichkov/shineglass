@@ -34,12 +34,12 @@ const Header = () => {
               </Link>
               </li>
               <li className="nav-item">
-                <Link to="sign-in" className="nav-link waves-effect">
+                <Link to="/sign-in" className="nav-link waves-effect">
                   Sign in
               </Link>
               </li>
               <li className="nav-item pl-2 mb-2 mb-md-0">
-                <Link to="sign-up" type="button"
+                <Link to="/sign-up" type="button"
                   className="btn btn-outline-info btn-md btn-rounded btn-navbar waves-effect waves-light">Sign
                 up</Link>
               </li>

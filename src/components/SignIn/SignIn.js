@@ -1,6 +1,8 @@
 import React from 'react'
 
-const SignIn = () => {
+const SignIn = ({
+    history
+}) => {
     const onSignInSubmitHandler = (e) => {
         e.preventDefault()
         const email = e.target.email.value
@@ -13,7 +15,8 @@ const SignIn = () => {
             },
             body: JSON.stringify({ email, password})
         }).then(res=>res.json())
-          .then(token=>console.log(token))
+          .then(token=>localStorage.setItem("user",token))
+          .then(res=>history.push('/'))
 
 
 

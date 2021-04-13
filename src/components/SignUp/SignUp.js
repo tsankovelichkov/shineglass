@@ -10,7 +10,20 @@ const SignUp = () => {
     const password=e.target.password.value
     const repeatPassword=e.target.repeatPassword.value
 
-    console.log(firstName,lastName,email,password,repeatPassword)
+    if(password!==repeatPassword){
+      return console.log('wrong password')
+    }
+
+    fetch('http://localhost:5000/auth/register',{
+      method:'POST',
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({email,password,firstName,lastName})
+    }).then(user=>user.json())
+      .then(user=>console.log(user))
+
+
 
   }
 
@@ -57,9 +70,10 @@ const SignUp = () => {
                 </small>
                 </div>
                 <div className="md-form md-outline mt-0">
-                  <input type="password" name="repeatPassword" id="defaultForm-email2" className="form-control" />
-                  <label data-error="wrong" data-success="right" htmlFor="defaultForm-email2">Repeat Password</label>
+                  <input type="password" name="repeatPassword" id="defaultForm-pass2" className="form-control" />
+                  <label data-error="wrong" data-success="right" htmlFor="defaultForm-pass2">Repeat Password</label>
                 </div>
+                <span></span>
 
                 <div className="text-center mb-2">
 

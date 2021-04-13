@@ -8,6 +8,8 @@ import AboutUs from './components/AboutUs/AboutUs';
 import Categories from './components/Categories/Categories';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import SignUp from './components/SignUp/SignUp';
+import SignIn from './components/SignIn/SignIn';
+
 
 
 
@@ -27,6 +29,7 @@ function App() {
             <Route path="/about-us" exact component={AboutUs}/>
             <Route path="/categories/:category/:gender" exact component={Categories}/>
             <Route path="/sign-up" exact component={SignUp}/>
+            <Route path="/sign-in" exact component={SignIn}/>
           </Switch>
         </div>
       </main>

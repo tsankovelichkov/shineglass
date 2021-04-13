@@ -1,28 +1,30 @@
 import React from 'react'
 
-const SignUp = () => {
+const SignUp = ({
+  history
+}) => {
 
   const onSignUpSubmitHandler = (e) => {
     e.preventDefault()
-    const firstName=e.target.firstName.value
-    const lastName=e.target.lastName.value
-    const email=e.target.email.value
-    const password=e.target.password.value
-    const repeatPassword=e.target.repeatPassword.value
+    const firstName = e.target.firstName.value
+    const lastName = e.target.lastName.value
+    const email = e.target.email.value
+    const password = e.target.password.value
+    const repeatPassword = e.target.repeatPassword.value
 
-    if(password!==repeatPassword){
+
+    if (password !== repeatPassword) {
       return console.log('wrong password')
     }
 
-    fetch('http://localhost:5000/auth/register',{
-      method:'POST',
-      headers:{
-        "Content-Type":"application/json"
+    fetch('http://localhost:5000/auth/register', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
       },
-      body:JSON.stringify({email,password,firstName,lastName})
-    }).then(user=>user.json())
-      .then(user=>console.log(user))
-
+      body: JSON.stringify({ email, password, firstName, lastName })
+    }).then(user => user.json())
+      .then(user => history.push('/sign-in'))
 
 
   }
@@ -77,9 +79,9 @@ const SignUp = () => {
 
                 <div className="text-center mb-2">
 
-                <button type="submit" className="btn btn-primary mb-4 waves-effect waves-light">Sign Up</button>
+                  <button type="submit" className="btn btn-primary mb-4 waves-effect waves-light">Sign Up</button>
 
-              </div>
+                </div>
 
               </form>
 

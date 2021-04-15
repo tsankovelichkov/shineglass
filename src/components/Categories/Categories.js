@@ -20,6 +20,8 @@ const Categories = ({
             .then(res => setSungalssesModelInfo(res))
     }, [brandName, gender])
 
+    console.log(sunglassesModelInfo)
+
    
 
     return (

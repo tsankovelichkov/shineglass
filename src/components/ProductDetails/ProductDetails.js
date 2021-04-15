@@ -20,6 +20,7 @@ const ProductDetails = ({
         let cart = localStorage.getItem('cart')
         if (!cart) {
             localStorage.setItem('cart', [JSON.stringify({
+                id: specificSunglass._id,
                 brandName: specificSunglass.name,
                 imageUrl: specificSunglass.imageUrl,
                 model: specificSunglass.model,
@@ -27,28 +28,30 @@ const ProductDetails = ({
                 gender: specificSunglass.gender
             })])
         } else {
-          if(!JSON.parse(cart).length){
-            let arrayOfProducts=[]
-            arrayOfProducts.push(JSON.parse(cart))
-            arrayOfProducts.push({
-              brandName: specificSunglass.name,
-              imageUrl: specificSunglass.imageUrl,
-              model: specificSunglass.model,
-              price: specificSunglass.price,
-              gender: specificSunglass.gender
-          })
-          localStorage.setItem('cart',JSON.stringify(arrayOfProducts))
-          }else{
-            let products=JSON.parse(cart)
-            products.push({
-              brandName: specificSunglass.name,
-              imageUrl: specificSunglass.imageUrl,
-              model: specificSunglass.model,
-              price: specificSunglass.price,
-              gender: specificSunglass.gender
-          })
-          localStorage.setItem('cart',JSON.stringify(products))
-          }
+            if (!JSON.parse(cart).length) {
+                let arrayOfProducts = []
+                arrayOfProducts.push(JSON.parse(cart))
+                arrayOfProducts.push({
+                    id: specificSunglass._id,
+                    brandName: specificSunglass.name,
+                    imageUrl: specificSunglass.imageUrl,
+                    model: specificSunglass.model,
+                    price: specificSunglass.price,
+                    gender: specificSunglass.gender
+                })
+                localStorage.setItem('cart', JSON.stringify(arrayOfProducts))
+            } else {
+                let products = JSON.parse(cart)
+                products.push({
+                    id: specificSunglass._id,
+                    brandName: specificSunglass.name,
+                    imageUrl: specificSunglass.imageUrl,
+                    model: specificSunglass.model,
+                    price: specificSunglass.price,
+                    gender: specificSunglass.gender
+                })
+                localStorage.setItem('cart', JSON.stringify(products))
+            }
         }
     }
 

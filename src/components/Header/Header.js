@@ -8,7 +8,6 @@ const Header = () => {
   const [user, setUser] = useState()
 
   let token = localStorage.getItem('user')
-  let cart =JSON.parse(localStorage.getItem('cart'))
 
   useEffect(() => {
     if (token) {
@@ -19,7 +18,6 @@ const Header = () => {
     }
   }, [token])
 
-  console.log(cart)
 
 
   return (

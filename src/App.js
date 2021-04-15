@@ -30,7 +30,7 @@ function App() {
       <main>
         <div className="container">
           <Switch>
-            <Route path="/" exact component={Main} />
+          <Route path="/" exact component={Main} />
             <Route path="/details/:id" exact component={ProductDetails} />
             <Route path="/contact" exact component={Contact}/>
             <Route path="/about-us" exact component={AboutUs}/>

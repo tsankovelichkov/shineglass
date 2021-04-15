@@ -8,6 +8,7 @@ const ProductListCard = ({ data }) => {
     let cart = localStorage.getItem('cart')
     if (!cart) {
         localStorage.setItem('cart', [JSON.stringify({
+            id:data._id,
             brandName: data.name,
             imageUrl: data.imageUrl,
             model: data.model,
@@ -19,6 +20,7 @@ const ProductListCard = ({ data }) => {
         let arrayOfProducts=[]
         arrayOfProducts.push(JSON.parse(cart))
         arrayOfProducts.push({
+          id:data._id,
           brandName: data.name,
           imageUrl: data.imageUrl,
           model: data.model,
@@ -29,6 +31,7 @@ const ProductListCard = ({ data }) => {
       }else{
         let products=JSON.parse(cart)
         products.push({
+          id:data._id,
           brandName: data.name,
           imageUrl: data.imageUrl,
           model: data.model,

@@ -11,6 +11,8 @@ import Categories from './components/Categories/Categories';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import SignUp from './components/SignUp/SignUp';
 import SignIn from './components/SignIn/SignIn';
+import Cart from './components/Cart/Cart';
+
 
 
 
@@ -35,6 +37,7 @@ function App() {
             <Route path="/categories/:category/:gender" exact component={Categories}/>
             <Route path="/sign-up" exact component={SignUp}/>
             <Route path="/sign-in" exact component={SignIn}/>
+            <Route path="/cart" exact component={Cart}/>
           </Switch>
         </div>
       </main>

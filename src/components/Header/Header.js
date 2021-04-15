@@ -37,10 +37,10 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="basicExampleNav">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <a href="#!" className="nav-link navbar-link-2 waves-effect">
+                <Link to="/cart" className="nav-link navbar-link-2 waves-effect">
                   <span className="badge badge-pill red">1</span>
                   <i className="fas fa-shopping-cart pl-0"></i>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <Link to="/about-us" className="nav-link waves-effect">
@@ -59,7 +59,7 @@ const Header = () => {
                     <i class="fas fa-user"></i>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink-333">
-                    <h3 class="dropdown-item">Hello,Tsanko Velichkov</h3>
+                    <p >Hello,{`${user.firstName} ${user.lastName}`}</p>
                     <a class="dropdown-item" href="/">Action</a>
                     <a class="dropdown-item" href="/">Another action</a>
                     <a class="dropdown-item" href="/">Something else here</a>

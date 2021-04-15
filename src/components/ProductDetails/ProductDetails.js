@@ -16,6 +16,43 @@ const ProductDetails = ({
     }, [match.params.id])
 
 
+    const addToCartHandler = (e) => {
+        let cart = localStorage.getItem('cart')
+        if (!cart) {
+            localStorage.setItem('cart', [JSON.stringify({
+                brandName: specificSunglass.name,
+                imageUrl: specificSunglass.imageUrl,
+                model: specificSunglass.model,
+                price: specificSunglass.price,
+                gender: specificSunglass.gender
+            })])
+        } else {
+          if(!JSON.parse(cart).length){
+            let arrayOfProducts=[]
+            arrayOfProducts.push(JSON.parse(cart))
+            arrayOfProducts.push({
+              brandName: specificSunglass.name,
+              imageUrl: specificSunglass.imageUrl,
+              model: specificSunglass.model,
+              price: specificSunglass.price,
+              gender: specificSunglass.gender
+          })
+          localStorage.setItem('cart',JSON.stringify(arrayOfProducts))
+          }else{
+            let products=JSON.parse(cart)
+            products.push({
+              brandName: specificSunglass.name,
+              imageUrl: specificSunglass.imageUrl,
+              model: specificSunglass.model,
+              price: specificSunglass.price,
+              gender: specificSunglass.gender
+          })
+          localStorage.setItem('cart',JSON.stringify(products))
+          }
+        }
+    }
+
+
     return (
         <>
             <section class="mb-5">
@@ -74,7 +111,7 @@ const ProductDetails = ({
                                             <div class="mt-1">
                                                 <div class="form-check form-check-inline pl-0">
                                                     <input type="radio" class="form-check-input" id="small" name="materialExampleRadios"
-                                                         />
+                                                    />
                                                     <label class="form-check-label small text-uppercase card-link-secondary"
                                                         for="small">Small</label>
                                                 </div>
@@ -95,7 +132,7 @@ const ProductDetails = ({
                                 </tbody>
                             </table>
                         </div>
-                        <button type="button" class="btn btn-light btn-md mr-1 mb-2"><i
+                        <button type="button" onClick={addToCartHandler} class="btn btn-light btn-md mr-1 mb-2"><i
                             class="fas fa-shopping-cart pr-2"></i>Add to cart</button>
                     </div>
                 </div>

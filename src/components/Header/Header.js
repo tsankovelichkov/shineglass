@@ -1,8 +1,27 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 import "./Header.css"
+import { useEffect, useState } from "react";
+import jwt_decode from "jwt-decode"
 
 const Header = () => {
+  const [user, setUser] = useState()
+
+  let token = localStorage.getItem('user')
+  let cart =JSON.parse(localStorage.getItem('cart'))
+
+  useEffect(() => {
+    if (token) {
+      let decodedToken = jwt_decode(token)
+      setUser(decodedToken)
+    } else {
+      setUser(null)
+    }
+  }, [token])
+
+  console.log(cart)
+
+
   return (
     <header>
       <nav className="navbar navbar-expand-md navbar-light fixed-top scrolling-navbar navbar-transparent">
@@ -33,18 +52,34 @@ const Header = () => {
                   Contact
               </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/sign-in" className="nav-link waves-effect">
-                  Sign in
+              {user ? (
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink-333">
+                    <h3 class="dropdown-item">Hello,Tsanko Velichkov</h3>
+                    <a class="dropdown-item" href="/">Action</a>
+                    <a class="dropdown-item" href="/">Another action</a>
+                    <a class="dropdown-item" href="/">Something else here</a>
+                  </div>
+                </li>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <Link to="/sign-in" className="nav-link waves-effect">
+                      Sign in
               </Link>
-              </li>
-              <li className="nav-item pl-2 mb-2 mb-md-0">
-                <Link to="/sign-up" type="button"
-                  className="btn btn-outline-info btn-md btn-rounded btn-navbar waves-effect waves-light">Sign
+                  </li>
+                  <li className="nav-item pl-2 mb-2 mb-md-0">
+                    <Link to="/sign-up" type="button"
+                      className="btn btn-outline-info btn-md btn-rounded btn-navbar waves-effect waves-light">Sign
                 up</Link>
-              </li>
+                  </li>
+                </>
+              )}
             </ul>
-
           </div>
         </div>
       </nav>

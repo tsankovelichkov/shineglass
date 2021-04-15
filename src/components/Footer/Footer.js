@@ -21,6 +21,7 @@ const Footer = () => {
                             </li>
                             <li>
                                 <a href="#!" className="btn btn-outline-white btn-rounded">Sign up!</a>
+                                <button onClick={()=>console.log(1)}>123</button>
                             </li>
                         </ul>
 

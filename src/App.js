@@ -1,4 +1,6 @@
 import { Route, Switch } from 'react-router-dom'
+import { useEffect, useState } from "react";
+
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -16,10 +18,13 @@ import SignIn from './components/SignIn/SignIn';
 
 
 
+
+
+
 function App() {
   return (
     <div >
-      <Header />
+    <Route  path="" exact component={Header} />
       <main>
         <div className="container">
           <Switch>

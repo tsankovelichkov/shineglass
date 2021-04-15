@@ -1,6 +1,5 @@
 import React from 'react'
 import Navigation from './Navigation';
-import Product from "../Cards/ProductListCard"
 import { useEffect, useState } from "react";
 import ProductListCard from '../Cards/ProductListCard';
 
@@ -8,6 +7,7 @@ import ProductListCard from '../Cards/ProductListCard';
 const Categories = ({
     match
 }) => {
+
     const [sunglassesModelInfo, setSungalssesModelInfo] = useState([])
 
     let brandName = match.params.category
@@ -20,17 +20,18 @@ const Categories = ({
             .then(res => setSungalssesModelInfo(res))
     }, [brandName, gender])
 
-
+   
 
     return (
         <>
-            <Navigation brandName={brandName} gender={gender}/>
+            <Navigation brandName={brandName} gender={gender} />
             <h4 className="text-center mt-4 mb-5"><strong></strong></h4>
 
             <section>
                 <div className="row">
                     {sunglassesModelInfo.map(x => <ProductListCard key={x._id} data={x} />)}
                 </div>
+                <button onclick={()=>localStorage.setItem('user')}></button>
             </section>
         </>
     )

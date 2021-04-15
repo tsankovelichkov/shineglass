@@ -15,9 +15,8 @@ const SignIn = ({
             },
             body: JSON.stringify({ email, password})
         }).then(res=>res.json())
-          .then(token=>localStorage.setItem("user",token))
+          .then(token=>{localStorage.setItem("user",token)})
           .then(res=>history.push('/'))
-
 
 
     }
@@ -54,7 +53,7 @@ const SignIn = ({
                             </form>
 
                             <div className="text-center pb-2">
-                                <p>Not a member? <a href="/">Register</a></p>
+                                <p>Not a member? <a href="/" >Register</a></p>
                             </div>
                         </section>
 

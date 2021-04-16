@@ -1,8 +1,11 @@
 import React from 'react'
+import { useState } from "react";
 
 const SignUp = ({
   history
 }) => {
+
+  const [error, setError] = useState()
 
   const onSignUpSubmitHandler = (e) => {
     e.preventDefault()
@@ -14,7 +17,15 @@ const SignUp = ({
 
 
     if (password !== repeatPassword) {
-      return console.log('wrong password')
+      setError('Passwords does not match!')
+      setTimeout(function(){ setError(undefined) }, 3000)
+      return
+    }
+
+    if (password.length < 6) {
+      setError('Password need to be more then 6 characters long!')
+      setTimeout(function(){ setError(undefined) }, 3000)
+      return
     }
 
     fetch('http://localhost:5000/auth/register', {
@@ -25,9 +36,11 @@ const SignUp = ({
       body: JSON.stringify({ email, password, firstName, lastName })
     }).then(user => user.json())
       .then(user => history.push('/sign-in'))
+      .catch(err => console.log(err))
 
 
   }
+
 
 
 
@@ -64,6 +77,9 @@ const SignUp = ({
                   <input type="email" name="email" id="defaultForm-email2" className="form-control" />
                   <label data-error="wrong" data-success="right" htmlFor="defaultForm-email2">Your email</label>
                 </div>
+                {error ? (<div class="alert alert-danger" role="alert">
+                  {error}
+                </div>) : <></>}
                 <div className="md-form md-outline mt-0">
                   <input type="password" name="password" id="defaultForm-pass2" className="form-control" />
                   <label data-error="wrong" data-success="right" htmlFor="defaultForm-pass2">Your password</label>

@@ -14,6 +14,10 @@ import SignUp from './components/SignUp/SignUp';
 import SignIn from './components/SignIn/SignIn';
 import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
+import ClientPurchases from './components/ClientPurchases/ClientPurchases';
+
+
+
 
 
 
@@ -34,6 +38,7 @@ function App() {
             <Route path="/sign-up" exact component={SignUp}/>
             <Route path="/sign-in" exact component={SignIn}/>
             <Route path="/cart" exact component={Cart}/>
+            <Route path="/your-purchases" exact component={ClientPurchases}/>
             <Route path="/checkout" exact component={Checkout}/>
             <Route path="/sign-out" exact render={props=>{
               localStorage.removeItem('user')

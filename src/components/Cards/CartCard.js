@@ -1,16 +1,24 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const CartCard = ({data}) => {
+
     const removeHandler=()=>{
         let cart = JSON.parse(localStorage.getItem('cart'))
         if(!cart.length){
-            localStorage.setItem('cart',[])
+            localStorage.removeItem('cart')
         }else{
-            let result = cart.filter(x=>x._id!=data._id)
-            console.log(result)
+            let result = cart.filter(x=>x.id!==data.id)
+            if(result.length>0){
             localStorage.setItem('cart',JSON.stringify(result))
+            }else{
+                localStorage.removeItem('cart')
+            }
+            
         }
     }
+
+
     return (
         <div class="row mb-4">
             <div class="col-md-5 col-lg-3 col-xl-3">
@@ -29,7 +37,7 @@ const CartCard = ({data}) => {
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <button type="button" onClick={removeHandler} class="card-link-secondary small text-uppercase mr-3"><i class="fas fa-trash-alt mr-1"></i> Remove item </button>
+                            <Link type="button" onClick={removeHandler}  class="card-link-secondary small text-uppercase mr-3"><i class="fas fa-trash-alt mr-1"></i> Remove item </Link>
                         </div>
                         <p class="mb-0"><span><strong>${data.price}</strong></span></p>
                     </div>

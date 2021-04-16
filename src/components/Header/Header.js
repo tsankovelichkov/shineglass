@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode"
 
 const Header = () => {
+
   const [user, setUser] = useState()
 
   let token = localStorage.getItem('user')
@@ -17,9 +18,7 @@ const Header = () => {
       setUser(null)
     }
   }, [token])
-
-
-
+  
   return (
     <header>
       <nav className="navbar navbar-expand-md navbar-light fixed-top scrolling-navbar navbar-transparent">
@@ -57,10 +56,9 @@ const Header = () => {
                     <i class="fas fa-user"></i>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink-333">
-                    <p >Hello,{`${user.firstName} ${user.lastName}`}</p>
-                    <a class="dropdown-item" href="/">Action</a>
-                    <a class="dropdown-item" href="/">Another action</a>
-                    <a class="dropdown-item" href="/">Something else here</a>
+                    <h5 class="center" >Hello,{`${user.firstName} ${user.lastName}`}</h5>
+                    <Link to="/your-purchases" class="dropdown-item" >Your Purchases</Link>
+                    <Link class="dropdown-item" to="/sign-out">Sign Out</Link>
                   </div>
                 </li>
               ) : (

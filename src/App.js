@@ -1,12 +1,10 @@
 import { Redirect, Route, Switch } from 'react-router-dom'
-import { useEffect, useState } from "react";
-import jwt_decode from "jwt-decode"
+
 
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Main from "./components/Homepage/Main/Main"
-import Contact from './components/Contact/Contact';
 import AboutUs from './components/AboutUs/AboutUs';
 import Categories from './components/Categories/Categories';
 import ProductDetails from './components/ProductDetails/ProductDetails';
@@ -15,6 +13,7 @@ import SignIn from './components/SignIn/SignIn';
 import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
 import ClientPurchases from './components/ClientPurchases/ClientPurchases';
+import ContactUs from './components/ContactUs/ContactUs';
 
 
 
@@ -32,7 +31,7 @@ function App() {
           <Switch>
           <Route path="/" exact component={Main} />
             <Route path="/details/:id" exact component={ProductDetails} />
-            <Route path="/contact" exact component={Contact}/>
+            <Route path="/contact" exact component={ContactUs}/>
             <Route path="/about-us" exact component={AboutUs}/>
             <Route path="/categories/:category/:gender" exact component={Categories}/>
             <Route path="/sign-up" exact component={SignUp}/>

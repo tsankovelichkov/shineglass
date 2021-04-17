@@ -15,6 +15,8 @@ const ProductDetails = ({
             .then(res => setSpecificSunglass(res))
     }, [match.params.id])
 
+    console.log(specificSunglass)
+
 
     const addToCartHandler = (e) => {
         let cart = localStorage.getItem('cart')
@@ -105,33 +107,7 @@ const ProductDetails = ({
                         <hr></hr>
                         <div class="table-responsive mb-2">
                             <table class="table table-sm table-borderless">
-                                <tbody>
-                                    <tr>
-                                        <td class="pb-0">Select size</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="mt-1">
-                                                <div class="form-check form-check-inline pl-0">
-                                                    <input type="radio" class="form-check-input" id="small" name="materialExampleRadios"
-                                                    />
-                                                    <label class="form-check-label small text-uppercase card-link-secondary"
-                                                        for="small">Small</label>
-                                                </div>
-                                                <div class="form-check form-check-inline pl-0">
-                                                    <input type="radio" class="form-check-input" id="medium" name="materialExampleRadios" />
-                                                    <label class="form-check-label small text-uppercase card-link-secondary"
-                                                        for="medium">Medium</label>
-                                                </div>
-                                                <div class="form-check form-check-inline pl-0">
-                                                    <input type="radio" class="form-check-input" id="large" name="materialExampleRadios" />
-                                                    <label class="form-check-label small text-uppercase card-link-secondary"
-                                                        for="large">Large</label>
-                                                </div>
-                                            </div>
-
-                                        </td>
-                                    </tr>
+                                <tbody>                                   
                                 </tbody>
                             </table>
                         </div>

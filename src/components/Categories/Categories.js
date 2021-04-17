@@ -31,7 +31,6 @@ const Categories = ({
                 <div className="row">
                     {sunglassesModelInfo.map(x => <ProductListCard key={x._id} data={x} />)}
                 </div>
-                <button onclick={()=>localStorage.setItem('user')}></button>
             </section>
         </>
     )

@@ -51,7 +51,7 @@ const Cart = () => {
                         <div class="col-lg-8">
                             <div class="card wish-list mb-4">
                                 <div class="card-body">
-                                    {products? products.map(x => <CartCard data={x} />) : <h3>No Cart Products</h3>}
+                                    {products? products.map(x => <CartCard id={x._id} data={x} />) : <h3>No Cart Products</h3>}
                                     <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> Do not delay the purchase, adding
                 items to your cart does not mean booking them.</p>
                                 </div>

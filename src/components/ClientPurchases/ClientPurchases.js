@@ -37,18 +37,18 @@ const ClientPurchases = ({
         <main>
             <h4 className="text-center mt-4 mb-5"><strong>Purchases</strong></h4>
 
-            <div class="container center">
+            <div className="container centerName">
 
 
-                <section class="mt-5 mb-4">
+                <section className="mt-5 mb-4">
 
-                    <div class="row">
+                    <div className="row">
 
 
-                        <div class="col-lg-8">
-                            <div class="card wish-list mb-4">
-                                <div class="card-body">
-                                {products? products.map(x => <ClientPurchasesCard data={x} />) : <h3>No Purchases</h3>}
+                        <div className="col-lg-8">
+                            <div className="card wish-list mb-4">
+                                <div className="card-body">
+                                {products? products.map(x => <ClientPurchasesCard id={x._id} data={x} />) : <h3>No Purchases</h3>}
                                 </div>
 
                             </div>

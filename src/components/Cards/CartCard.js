@@ -20,22 +20,22 @@ const CartCard = ({data}) => {
 
 
     return (
-        <div class="row mb-4">
-            <div class="col-md-5 col-lg-3 col-xl-3">
-                <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
-                    <img class="img-fluid w-100" src={data.imageUrl} alt="Sample" />
+        <div className="row mb-4">
+            <div className="col-md-5 col-lg-3 col-xl-3">
+                <div className="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
+                    <img className="img-fluid w-100" src={data.imageUrl} alt="Sample" />
                 </div>
             </div>
-            <div class="col-md-7 col-lg-9 col-xl-9">
+            <div className="col-md-7 col-lg-9 col-xl-9">
                 <div>
-                    <div class="d-flex justify-content-between">
+                    <div className="d-flex justify-content-between">
                         <div>
                             <h5>{data.brandName}</h5>
-                            <p class="mb-3 text-muted text-uppercase small">{data.model}</p>
-                            <p class="mb-2 text-muted text-uppercase small">{data.gender}</p>
+                            <p className="mb-3 text-muted text-uppercase small">{data.model}</p>
+                            <p className="mb-2 text-muted text-uppercase small">{data.gender}</p>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div className="d-flex justify-content-between align-items-center">
                         <div>
                             <Link type="button" onClick={removeHandler}  class="card-link-secondary small text-uppercase mr-3"><i class="fas fa-trash-alt mr-1"></i> Remove item </Link>
                         </div>
@@ -43,7 +43,7 @@ const CartCard = ({data}) => {
                     </div>
                 </div>
             </div>
-            <hr class="mb-4"></hr>
+            <hr className="mb-4"></hr>
         </div>
 
     )

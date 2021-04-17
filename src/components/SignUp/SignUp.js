@@ -18,13 +18,13 @@ const SignUp = ({
 
     if (password !== repeatPassword) {
       setError('Passwords does not match!')
-      setTimeout(function(){ setError(undefined) }, 3000)
+      setTimeout(function () { setError(undefined) }, 3000)
       return
     }
 
     if (password.length < 6) {
       setError('Password need to be more then 6 characters long!')
-      setTimeout(function(){ setError(undefined) }, 3000)
+      setTimeout(function () { setError(undefined) }, 3000)
       return
     }
 
@@ -36,7 +36,10 @@ const SignUp = ({
       body: JSON.stringify({ email, password, firstName, lastName })
     }).then(user => user.json())
       .then(user => history.push('/sign-in'))
-      .catch(err => console.log(err))
+      .catch(err => {
+        setError('There is such an existing account!')
+        setTimeout(function () { setError(undefined) }, 3000)
+      })
 
 
   }
@@ -57,7 +60,9 @@ const SignUp = ({
             <section className="mt-4 mb-5">
 
               <form action="#!" onSubmit={onSignUpSubmitHandler}>
-
+                {error ? (<div class="alert alert-danger" role="alert">
+                  {error}
+                </div>) : <></>}
                 <div className="form-row">
                   <div className="col">
                     <div className="md-form md-outline mt-0">
@@ -77,9 +82,6 @@ const SignUp = ({
                   <input type="email" name="email" id="defaultForm-email2" className="form-control" />
                   <label data-error="wrong" data-success="right" htmlFor="defaultForm-email2">Your email</label>
                 </div>
-                {error ? (<div class="alert alert-danger" role="alert">
-                  {error}
-                </div>) : <></>}
                 <div className="md-form md-outline mt-0">
                   <input type="password" name="password" id="defaultForm-pass2" className="form-control" />
                   <label data-error="wrong" data-success="right" htmlFor="defaultForm-pass2">Your password</label>

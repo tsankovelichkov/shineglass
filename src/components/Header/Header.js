@@ -7,17 +7,28 @@ import jwt_decode from "jwt-decode"
 const Header = () => {
 
   const [user, setUser] = useState()
+  const [purchases, setPurchases] = useState()
+
 
   let token = localStorage.getItem('user')
+  let cart = localStorage.getItem('cart')
+  
+
+
 
   useEffect(() => {
+  let cart = JSON.parse(localStorage.getItem('cart'))
+    if(cart.length){
+      setPurchases(cart.length)
+    }
+
     if (token) {
       let decodedToken = jwt_decode(token)
       setUser(decodedToken)
     } else {
       setUser(null)
     }
-  }, [token])
+  }, [token,cart])
   
   return (
     <header>
@@ -35,7 +46,7 @@ const Header = () => {
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to="/cart" className="nav-link navbar-link-2 waves-effect">
-                  <span className="badge badge-pill red">1</span>
+                  <span className="badge badge-pill red">{purchases}</span>
                   <i className="fas fa-shopping-cart pl-0"></i>
                 </Link>
               </li>

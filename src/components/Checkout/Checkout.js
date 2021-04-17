@@ -6,13 +6,17 @@ const Checkout = ({
   history
 }) => {
   const [sumPrices, setSumPrices] = useState()
-
+  const [error, setError] = useState()
 
   useEffect(() => {
     let sum = 0
-
-    for (const sunglass of JSON.parse(localStorage.getItem('cart'))) {
-      sum += Number(sunglass.price)
+    let cart = JSON.parse(localStorage.getItem('cart'))
+    if (cart.length) {
+      for (const sunglass of cart) {
+        sum += Number(sunglass.price)
+      }
+    } else {
+      sum += Number(cart.price)
     }
 
     setSumPrices(sum)
@@ -41,7 +45,11 @@ const Checkout = ({
     const phone = e.target.phone.values
     const email = e.target.email.value
 
-    console.log(history)
+    if (firstName == "" || lastName == "" || country == "" || address == "" || postcode == "" || town == "" || phone == "" || email == "") {
+      setError('You need to fullfill all gapses!')
+      setTimeout(function () { setError(undefined) }, 3000)
+      return
+    }
 
     fetch('http://localhost:5000/add-purchases', {
       method: 'POST',
@@ -50,7 +58,14 @@ const Checkout = ({
       },
       body: JSON.stringify({ accountOwner: decodedUser.email, firstName, lastName, country, address, postcode, town, phone, email, purchases })
     }).then(res => res.json())
-      .then(res => history.push('/ '))
+      .then(res => localStorage.removeItem('cart'))
+      .then(res => {
+        history.push('/')
+      })
+      .catch(err => {
+        setError('You need to fullfill all gapses!')
+        setTimeout(function () { setError(undefined) }, 3000)
+      })
 
 
 
@@ -72,7 +87,9 @@ const Checkout = ({
 
               <h5 class="mb-2">Billing details</h5>
               <form onSubmit={onPurchaseSubmitHandler}>
-
+                {error ? (<div class="alert alert-danger" role="alert">
+                  {error}
+                </div>) : <></>}
                 <div class="row">
 
                   <div class="col-lg-6">
@@ -127,6 +144,7 @@ const Checkout = ({
                   <input type="email" name="email" id="form19" class="form-control" />
                   <label for="email">Email address</label>
                 </div>
+                <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> You need to be aware that if you don not have account the information about the purchase will be recieved only by phone number.</p>
 
                 <button type="submit" class="btn btn-primary btn-block waves-effect waves-light">Make purchase</button>
 
@@ -166,19 +184,17 @@ const Checkout = ({
                   <span><strong>${sumPrices}</strong></span>
                 </li>
               </ul>
-
-
-            </div>
+              </div>
           </div>
 
 
 
 
 
+          </div>
+
+
         </div>
-
-
-      </div>
 
 
     </section>

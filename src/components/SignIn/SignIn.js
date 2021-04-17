@@ -1,8 +1,14 @@
 import React from 'react'
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
+
 
 const SignIn = ({
     history
 }) => {
+    const [error, setError] = useState()
+
     const onSignInSubmitHandler = (e) => {
         e.preventDefault()
         const email = e.target.email.value
@@ -13,10 +19,14 @@ const SignIn = ({
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ email, password})
-        }).then(res=>res.json())
-          .then(token=>{localStorage.setItem("user",token)})
-          .then(res=>history.push('/'))
+            body: JSON.stringify({ email, password })
+        }).then(res => res.json())
+            .then(token => { localStorage.setItem("user", token) })
+            .then(res => history.push('/'))
+            .catch(err => {
+                setError('Incorrect email or password!')
+                setTimeout(function () { setError(undefined) }, 3000)
+            })
 
 
     }
@@ -34,6 +44,9 @@ const SignIn = ({
                         <section className="mb-5">
 
                             <form action="#!" onSubmit={onSignInSubmitHandler}>
+                                {error ? (<div class="alert alert-danger" role="alert">
+                                    {error}
+                                </div>) : <></>}
 
                                 <div className="md-form md-outline">
                                     <input type="email" name="email" id="defaultForm-email1" className="form-control" />
@@ -53,7 +66,7 @@ const SignIn = ({
                             </form>
 
                             <div className="text-center pb-2">
-                                <p>Not a member? <a href="/" >Register</a></p>
+                                <p>Not a member? <Link to="/sign-up" >Register</Link></p>
                             </div>
                         </section>
 
